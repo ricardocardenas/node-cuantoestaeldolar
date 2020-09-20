@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--lint disable no-literal-urls-->
 <p align="center">
   <a href="https://nodejs.org/">
@@ -613,3 +614,6 @@ Other keys used to sign some previous releases:
 [OpenJS Foundation]: https://openjsf.org/
 [Working Groups]: https://github.com/nodejs/TSC/blob/master/WORKING_GROUPS.md
 [Strategic Initiatives]: https://github.com/nodejs/TSC/blob/master/Strategic-Initiatives.md
+=======
+# node-cuantoestaeldolar
+>>>>>>> bf9642390d6567b33f40fd7465f48154c082840d
