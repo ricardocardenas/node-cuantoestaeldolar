@@ -1,3 +1,8 @@
+#node installation
+install_tools.bat
+node.exe
+npm.exe
+
 # Logs
 logs
 *.log
