@@ -31,21 +31,19 @@ async function getData(url) {
 	$("div.tb_dollar_compra", tabla).slice(1).each((i, elem) => compras.push(parseFloat($(elem).text().replace(/\$/, ""))));
 	$("div.tb_dollar_venta", tabla).slice(1).each((i, elem)  => ventas.push(parseFloat($(elem).text().replace(/S\/\./, ""))));
 
-	resultados = cambistas.map( (elem, index) => {
-		halfSpread = (ventas[index]-compras[index]) / 2;
-		return {"Cambista" : elem, "Compra" : compras[index], "Venta" : ventas[index], "HalfSpread" : Math.round(halfSpread*10000+Number.EPSILON)/10000}
+	resultados = cambistas.map( (elem, i) => {
+		halfSpread = Math.round((ventas[i]-compras[i]) / 2 * 10000 + Number.EPSILON)/10000;
+		return {"Cambista" : elem, "Compra" : compras[i], "Venta" : ventas[i], "HalfSpread" : halfSpread}
 	});
 	return resultados.sort((a,b) => a.HalfSpread - b.HalfSpread);
 	// console.log(resultados);
 }
 
-
-
 const app = Express();
 
 app.get("/", (req,res) => {
 	p = getData("https://cuantoestaeldolar.pe/");
-	p.then( resultados => res.send(resultados));
+	p.then( resultados => res.json(resultados));
 });
 
 app.listen(5000, _ => console.log("listening..."));
